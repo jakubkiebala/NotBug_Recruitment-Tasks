@@ -1,7 +1,20 @@
-<div *ngFor="let car of cars">
-    <h3>{{ car.name }}</h3>
-    <p>{{ car.brand }}</p>
-  </div>
+<!-- Formularz do dodawania nowego samochodu -->
+<form (ngSubmit)="addCar()">
+    <label for="name">Nazwa samochodu</label>
+    <input id="name" [(ngModel)]="newCar.name" name="name" required placeholder="Wpisz nazwę samochodu">
   
-  <button (click)="addCar()">Dodaj samochód</button>
+    <label for="brand">Marka samochodu</label>
+    <input id="brand" [(ngModel)]="newCar.brand" name="brand" required placeholder="Wpisz markę samochodu">
+  
+    <button type="submit">Dodaj samochód</button>
+  </form>
+  
+  <!-- Wyświetlanie listy samochodów -->
+  <h3>Lista samochodów</h3>
+  <ul>
+    <li *ngFor="let car of cars">
+      {{ car.name }} ({{ car.brand }})
+      <!-- Można dodać dodatkowe informacje o samochodach, np. przyciski do edycji -->
+    </li>
+  </ul>
   

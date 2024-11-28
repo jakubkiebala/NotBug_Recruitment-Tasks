@@ -1,15 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from '../local-storage.service'; // Importujemy serwis
-import { CommonModule } from '@angular/common';  // Jeśli używasz *ngFor, dodaj CommonModule
+import { LocalStorageService } from '../local-storage.service'; // Poprawny import
+import { CommonModule } from '@angular/common';  // Dodatkowo potrzebujemy CommonModule, jeśli używamy *ngFor
+import { FormsModule } from '@angular/forms';  // Importujemy FormsModule
 
 @Component({
   selector: 'app-cars',
   templateUrl: './cars.component.html',
   styleUrls: ['./cars.component.css'],
-  imports: [CommonModule]  // Dodaj CommonModule, jeśli używasz *ngFor w szablonie
+  imports: [CommonModule, FormsModule],  // Importujemy FormsModule
+  providers: [LocalStorageService] // Rejestrujemy serwis w tym komponencie
 })
 export class CarsComponent implements OnInit {
-  cars: { id: string; name: string; brand: string; services: any[] }[] = []; // Definiowanie typu dla samochodów
+  cars: any[] = [];
+  
+  // Nowy samochód, który będziemy dodawać
+  newCar = {
+    id: '',
+    name: '',
+    brand: '',
+    services: []
+  };
 
   constructor(private localStorageService: LocalStorageService) {}
 
@@ -22,13 +32,25 @@ export class CarsComponent implements OnInit {
   }
 
   addCar() {
+    if (!this.newCar.name || !this.newCar.brand) {
+      return; // Jeśli nie wprowadzono nazwy lub marki, nie dodajemy samochodu
+    }
+
     const newCar = {
-      id: Date.now().toString(),
-      name: 'Nowy samochód',
-      brand: 'Nieznana marka',
-      services: []
+      ...this.newCar,
+      id: Date.now().toString(),  // Generujemy unikalny ID
     };
+
     this.cars.push(newCar);
     this.localStorageService.saveData('cars', this.cars);
+
+    // Resetujemy formularz po dodaniu samochodu
+    this.newCar = {
+      id: '',
+      name: '',
+      brand: '',
+      services: []
+    };
   }
 }
+
