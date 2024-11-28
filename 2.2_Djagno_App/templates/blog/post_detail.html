@@ -18,14 +18,16 @@
       <p class="likes-count"><strong>Likes:</strong> {{ post.likes.count }}</p>
 
       {% if user.is_authenticated %}
-        <!-- Przycisk "Like" / "Unlike" -->
-        <button class="like-button" data-post-id="{{ post.id }}">
-          {% if user_liked %}
-            Unlike
-          {% else %}
-            Like
-          {% endif %}
-        </button>
+        <form action="{% url 'post_like' post.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="like-button">
+            {% if user_liked %}
+              Unlike
+            {% else %}
+              Like
+            {% endif %}
+          </button>
+        </form>
       {% else %}
         <p><a href="{% url 'login' %}">Log in</a> to like this post.</p>
       {% endif %}

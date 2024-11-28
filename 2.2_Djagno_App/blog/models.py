@@ -13,7 +13,6 @@ class Post(models.Model):
 
     @property
     def likes_count(self):
-        # Zlicza ilość polubień dla tego posta
         return self.likes.count()
 
 

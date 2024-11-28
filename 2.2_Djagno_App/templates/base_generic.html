@@ -7,16 +7,6 @@
   
   {% load static %}
 
-  <meta name="csrf-token" content="{{ csrf_token }}">
-  <script>
-    const csrfToken = document.querySelector('meta[name="csrf-token"]');
-    if (csrfToken) {
-    csrfToken = csrfToken.getAttribute('content');
-    } else {
-    console.error('Token CSRF nie został znaleziony');
-    }
-  </script>
-
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
@@ -42,5 +32,4 @@
   </main>
 
 </body>
-<script src="{% static 'js/like_button.js' %}"></script>
 </html>

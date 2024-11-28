@@ -1,4 +1,3 @@
-from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
@@ -83,35 +82,21 @@ class EditPost(View):
 
 class PostDetail(View):
     def get(self, request, post_id):
-        # Pobierz post na podstawie jego id
         post = get_object_or_404(Post, id=post_id)
+        user_liked = Like.objects.filter(user=request.user, post=post).exists()
 
-        # Sprawdź, czy użytkownik polubił ten post
-        user_liked = post.likes.filter(user=request.user).exists() if request.user.is_authenticated else False
-
-        # Zwróć szablon z danymi
         return render(request, 'blog/post_detail.html', {'post': post, 'user_liked': user_liked})
 
 
 class ToggleLikeView(LoginRequiredMixin, View):
     def post(self, request, post_id):
-        # Pobierz post na podstawie ID
         post = get_object_or_404(Post, id=post_id)
-        
-        # Sprawdź, czy użytkownik już polubił post
+
         like = Like.objects.filter(user=request.user, post=post).first()
-        
+
         if like:
-            # Jeśli polubienie istnieje, usuń je
             like.delete()
-            liked = False
         else:
-            # Jeśli polubienie nie istnieje, utwórz nowe
             Like.objects.create(user=request.user, post=post)
-            liked = True
-        
-        # Zwróć odpowiedź JSON z aktualnym stanem polubienia i liczbą polubień
-        return JsonResponse({
-            'liked': liked,
-            'likes_count': post.likes.count()
-        })
+
+        return redirect('post_detail', post_id=post.id)

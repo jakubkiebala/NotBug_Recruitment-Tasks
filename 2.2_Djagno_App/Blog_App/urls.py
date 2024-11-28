@@ -29,5 +29,5 @@ urlpatterns = [
     path('create/', views.CreatePost.as_view(), name='create_post'),
     path('edit/<int:post_id>/', views.EditPost.as_view(), name='edit_post'),
     path('post/<int:post_id>/', views.PostDetail.as_view(), name='post_detail'),
-    path('post/<int:post_id>/like', views.ToggleLikeView.as_view(), name='post_like')
+    path('post/<int:post_id>/like/', views.ToggleLikeView.as_view(), name='post_like')
 ]
