@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section style="text-align: center; margin-top: 20px;">
+    <h2>Welcome to the Home Page!</h2>
+    <p>This page uses the base layout.</p>
+    <div style="margin-top: 20px;">
+        <a href="{{ url_for('tasks') }}" style="margin-right: 15px; text-decoration: none; color: blue;">My Tasks</a>
+        <a href="{{ url_for('lists')}}" style="text-decoration: none; color: blue;">My Lists</a>
+    </div>
+</section>
+{% endblock %}

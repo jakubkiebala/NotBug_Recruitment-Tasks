@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section style="text-align: center; margin-top: 20px;">
+    <h2>Add New Task</h2>
+    <div style="margin-top: 20px;">
+        <a href="{{ url_for('tasks') }}" style="text-decoration: none; color: blue;">Return</a>
+        <form action="{{url_for ('task_add')}}" method="POST">
+            <label for="name">Task Name:</label><br>
+            <input type="text" id="name" name="name" maxlength="100" required><br><br>
+            
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" rows="4" cols="50"></textarea><br><br>
+            
+            <button type="submit">Add Task</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

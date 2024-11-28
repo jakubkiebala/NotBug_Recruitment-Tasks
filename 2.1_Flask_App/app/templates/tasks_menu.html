@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Task Menu{% endblock %}
+
+{% block content %}
+<section style="text-align: center; margin-top: 20px;">
+    <h2>Welcome to your Task Menu!</h2>
+    <div style="margin-top: 20px;">
+        <a href="{{ url_for('task_add') }}" style="margin-right: 15px; text-decoration: none; color: blue;">Add Task</a>
+        <a href="{{ url_for('home') }}" style="text-decoration: none; color: blue;">Return To Home Page</a>
+    </div>
+    {% if tasks_list %}
+        {% for task in tasks_list %}
+            <p>{{ task[1] }} [{{ task[2] }}]<a href={{url_for('task_update', task_id=task[0])}}>  [Update]  </a><a href={{url_for('task_delete', task_id=task[0])}}>  [X]  </a> </p>
+        {% endfor %}
+    {% else %}
+        <p>No tasks available.</p>
+    {% endif %}
+</section>
+{% endblock %}

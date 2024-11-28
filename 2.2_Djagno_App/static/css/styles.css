@@ -1,0 +1,505 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body of the page */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px;
+    height: 100vh; /* Ustawiamy pełną wysokość okna */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Zapobiegamy przewijaniu całej strony */
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #f0a500;
+}
+
+/* Main content styles */
+main {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    min-height: 80vh; /* Gwarantuje minimalną wysokość */
+    overflow: hidden; /* Ukrywa przewijanie strony */
+}
+
+/* Styles for internal links */
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 1.1rem;
+    }
+
+    main {
+        padding: 20px;
+    }
+}
+
+/* Style for the posts container */
+.blog-posts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-height: 60vh; /* Ustalamy maksymalną wysokość kontenera */
+    overflow-y: auto; /* Włączamy przewijanie tylko dla postów */
+}
+
+/* Style for individual post */
+.blog-post-item {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer; /* Indicates that the post is clickable */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-post-item:hover {
+    transform: scale(1.05); /* Enlarges the post on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increases shadow on hover */
+}
+
+/* Post title */
+.blog-post-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Post text */
+.blog-post-item p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* Display creation date of the post */
+.blog-post-item p.created-at {
+    font-size: 0.9rem;
+    color: #777;  /* Subtle color for date */
+    margin-top: 10px;  /* Space from text */
+    font-style: italic; /* Italicize the text */
+}
+
+/* Link to edit post */
+.blog-post-item a {
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.blog-post-item a:hover {
+    text-decoration: underline;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Wyrównanie w pionie */
+    gap: 10px; /* Minimalna odległość między napisem a przyciskiem */
+    margin-bottom: 20px; /* Odstęp poniżej nagłówka */
+}
+
+/* Style for the create post button */
+.create-post-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.create-post-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsiveness for posts container */
+@media (max-width: 768px) {
+    .blog-posts-container {
+        grid-template-columns: 1fr; /* Posts in one column on smaller screens */
+    }
+}
+
+/* Post detail container - Stylish background and shadow */
+.post-detail-container {
+    background: linear-gradient(135deg, #f4f7f6, #ffffff);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 40px auto;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Title styling */
+.post-detail-container h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Author and date styling */
+.post-detail-container p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.post-detail-container p strong {
+    color: #333;
+}
+
+/* Post content - Better typography */
+.post-content p {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Likes section */
+.likes-section {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Like button animation */
+.likes-section button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+}
+
+.likes-section button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+/* Edit post button - More emphasis */
+.edit-post-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+}
+
+.edit-post-button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Animation for fade in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Login form container */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Maximum width of the form */
+    margin: 0 auto; /* Center form horizontally */
+}
+
+/* Login form title */
+.login-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Style for form fields */
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Style for form button */
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for registration link */
+.login-container p {
+    font-size: 1rem;
+    color: #333;
+}
+
+.login-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+/* Registration form container */
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Maximum width of the form */
+    margin: 0 auto; /* Center form horizontally */
+}
+
+/* Registration form title */
+.register-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Style for form fields (use the same styles as for login) */
+.register-container input,
+.register-container select,
+.register-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Style for form button */
+.register-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.register-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for login link */
+.register-container p {
+    font-size: 1rem;
+    color: #333;
+}
+
+.register-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-container a:hover {
+    text-decoration: underline;
+}
+
+/* Create post form container */
+.create-post-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+/* Create post form title */
+.create-post-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Style for form fields */
+.create-post-container input,
+.create-post-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Style for form button */
+.create-post-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.create-post-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Edit post form container */
+.edit-post-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+/* Edit post form title */
+.edit-post-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Style for form fields */
+.edit-post-container input,
+.edit-post-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Style for form button */
+.edit-post-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-post-container button:hover {
+    background-color: #0056b3;
+}

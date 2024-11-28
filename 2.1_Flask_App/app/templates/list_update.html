@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Task{% endblock %}
+
+{% block content %}
+<section style="text-align: center; margin-top: 20px;">
+    <h2>Update List</h2>
+    <div style="margin-top: 20px;">
+        <a href="{{ url_for('lists') }}" style="text-decoration: none; color: blue;">Return</a>
+        <form action="{{ url_for('list_update', list_id=list[0]) }}" method="POST">
+            <label for="name">List Name:</label><br>
+            <input type="text" id="name" name="name" value="{{ list[1] }}" maxlength="100" required><br><br>            
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Task Menu{% endblock %}
+
+{% block content %}
+<section style="text-align: center; margin-top: 20px;">
+    <h2>Welcome to your List Menu!</h2>
+    <div style="margin-top: 20px;">
+        <a href="{{ url_for('list_add') }}" style="margin-right: 15px; text-decoration: none; color: blue;">Add List</a>
+        <a href="{{ url_for('home') }}" style="text-decoration: none; color: blue;">Return To Home Page</a>
+    </div>
+    {% if lists_list %}
+        {% for list in lists_list %}
+            <p>{{ list[1] }}<a href={{url_for('list_update', list_id=list[0])}}>  [Update]
+            </a><a href={{url_for('list_delete', list_id=list[0])}}>  [X]  </a> </p>
+        {% endfor %}
+    {% else %}
+        <p>No Lists available.</p>
+    {% endif %}
+</section>
+{% endblock %}

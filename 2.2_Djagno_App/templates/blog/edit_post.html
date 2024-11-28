@@ -1,0 +1,13 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <div class="edit-post-container">
+    <h2>Edit Post</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <input type="text" name="title" value="{{ post.title }}" required>
+      <textarea name="content" required>{{ post.content }}</textarea>
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
+{% endblock %}

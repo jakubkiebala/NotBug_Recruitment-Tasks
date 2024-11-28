@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Task{% endblock %}
+
+{% block content %}
+<section style="text-align: center; margin-top: 20px;">
+    <h2>Delete Task</h2>
+    <div style="margin-top: 20px;">
+        <form action="{{ url_for('task_delete', task_id=task[0]) }}" method="POST">
+            <p>Are you sure you want to delete this task?</p>
+            <button type="submit" style="background-color: red; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                Confirm Deletion
+            </button>
+            <a href="{{ url_for('tasks') }}" style="text-decoration: none; color: blue; padding-left: 10px;">
+                Cancel
+            </a>
+        </form>
+    </div>
+</section>
+{% endblock %}

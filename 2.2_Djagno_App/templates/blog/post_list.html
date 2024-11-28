@@ -1,0 +1,20 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <div class="header-container">
+    <h2>Blog Posts</h2>
+    <a href="{% url 'create_post' %}" class="create-post-button">Create New Post</a>
+  </div>
+  
+  <div class="blog-posts-container">
+    {% for post in posts %}
+      <a href="{% url 'post_detail' post.id %}" class="blog-post-item">
+        <div class="blog-post-item-content">
+          <h3>{{ post.title }}</h3>
+          <p>Author: {{ post.author }}</p>
+          <p class="created-at">Last edited on: {{ post.updated_at|date:"F j, Y, g:i a" }}</p>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}

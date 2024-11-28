@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Task{% endblock %}
+
+{% block content %}
+<section style="text-align: center; margin-top: 20px;">
+    <h2>Update Task</h2>
+    <div style="margin-top: 20px;">
+        <a href="{{ url_for('tasks') }}" style="text-decoration: none; color: blue;">Return</a>
+        <form action="{{ url_for('task_update', task_id=task[0]) }}" method="POST">
+            <label for="name">Task Name:</label><br>
+            <input type="text" id="name" name="name" value="{{ task[1] }}" maxlength="100" required><br><br>
+            
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" rows="4" cols="50">{{ task[2] }}</textarea><br><br>
+            
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
