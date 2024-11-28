@@ -1,1 +1,24 @@
-<p>services works!</p>
+<!-- Formularz do dodania nowego serwisu -->
+<form (ngSubmit)="addService()">
+    <label for="name">Nazwa serwisu</label>
+    <input id="name" [(ngModel)]="newService.name" name="name" required>
+  
+    <label for="date">Data serwisu</label>
+    <input id="date" [(ngModel)]="newService.date" name="date" type="date" required>
+  
+    <label for="cost">Koszt serwisu</label>
+    <input id="cost" [(ngModel)]="newService.cost" name="cost" type="number" required>
+  
+    <button type="submit">Dodaj serwis</button>
+  </form>
+  
+  <!-- Wyświetlanie usług samochodu -->
+  <div *ngIf="car">
+    <h3>Usługi dla samochodu: {{ car.name }}</h3>
+    <ul>
+      <li *ngFor="let service of car.services">
+        {{ service.name }} - {{ service.date }} - {{ service.cost | currency }}
+      </li>
+    </ul>
+  </div>
+  

@@ -4,6 +4,7 @@ import { CarsComponent } from "./cars/cars.component";
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [RouterOutlet, CarsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

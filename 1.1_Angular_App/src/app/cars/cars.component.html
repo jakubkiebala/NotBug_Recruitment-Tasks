@@ -1,7 +1,7 @@
-<h1>Lista samochodów</h1>
-<button (click)="addCar()">Dodaj samochód</button>
-<ul>
-    <li *ngFor="let car of cars">
-        {{ car.name}} - {{ car.brand}}
-    </li>
-</ul>
+<div *ngFor="let car of cars">
+    <h3>{{ car.name }}</h3>
+    <p>{{ car.brand }}</p>
+  </div>
+  
+  <button (click)="addCar()">Dodaj samochód</button>
+  

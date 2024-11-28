@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'  // Serwis dostępny w całej aplikacji
+  providedIn: 'root',  // Serwis dostępny globalnie w aplikacji
 })
 export class LocalStorageService {
   getData(key: string): any {
@@ -9,7 +9,7 @@ export class LocalStorageService {
       const data = localStorage.getItem(key);
       return data ? JSON.parse(data) : null;
     }
-    return null; // Zwróć null lub pustą wartość, gdy nie jest dostępny localStorage
+    return null; // Zwróć null, gdy localStorage nie jest dostępny
   }
 
   saveData(key: string, data: any): void {
